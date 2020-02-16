@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        <%= title %>
+    </title>
+    <link rel='stylesheet' href='/stylesheets/custom.css' />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="/javascripts/custom.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <h1 class="d-inline">Vidatec</h1>
+        <h1 class="d-inline pull-right">
+            <%= title %>
+        </h1>
+    </header>
+
+    <div class="h-line"></div>
+
+    <div class="section">
+        <span class="section-header">Sightings</span>
+        <div class="pull-right">
+            <input type="button" class="add-button" value="Add Sighting" onclick="window.location.href='/add-site'" />
+        </div>
+    </div>
+
+    <div class="section inline-div">
+        <label class="inline-element pr-1">Filter by confidence: </label>
+        <select id="selectConfidence" class="inline-element">
+            <option selected disabled>Select confidence</option>
+            <option value="1">Confident</option>
+            <option value="0">Not confident</option>
+            <option value="2">Both</option>
+        </select>
+    </div>
+
+    <div class="section">
+        <table>
+            <tr>
+                <th>Type Of Bird</th>
+                <th>Confidence Of Sight</th>
+                <th>Spotting Date</th>
+                <th>Extra Info</th>
+            </tr>
+            <% bird_spotter_result.forEach(function(result){ %>
+                <tr class="expand">
+                    <td>
+                        <%= result.TypeOfBird %>
+                    </td>
+                    <td>
+                        <%= result.ConfidenceOfSight? 'Confident': 'Non-confident' %>
+                    </td>
+                    <td>
+                        <%= result.SpottingDate %>
+                    </td>
+                    <td>
+                        <i class="fa fa-chevron-down expand"></i>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <p>Place of sighting:
+                            <%= result.PlaceOfSighting %>
+                        </p>
+                        <p>Spotter Name:
+                            <%= result.SpotterName %>
+                        </p>
+                    </td>
+                </tr>
+                <%  }); %>
+        </table>
+    </div>
+</body>
+
+</html>

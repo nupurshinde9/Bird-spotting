@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        <%= title %>
+    </title>
+    <link rel='stylesheet' href='/stylesheets/custom.css' />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+
+
+    <header>
+        <h1 class="d-inline">Vidatec</h1>
+        <h1 class="d-inline pull-right">
+            <%= title %>
+        </h1>
+    </header>
+
+    <div class="h-line"></div>
+
+    <div class="section">
+        <span class="section-header">Add Sightings</span>
+        <div class="pull-right">
+            <input type="button" class="add-button" value="Go back" onclick="window.location.href='/'" />
+        </div>
+    </div>
+
+    <div class="section">
+
+        <div class="container">
+            <form name="form_AddSpotter" method="POST" action="/spotter/add">
+
+                <label for="SpotterName">Spotter Name: </label>
+                <input type="text" maxlength="100" id="SpotterName" name="SpotterName" placeholder="Enter spotter name.." required>
+
+                <label for="TypeOfBird">Type Of Bird: </label>
+                <input type="text" maxlength="100" id="TypeOfBird" name="TypeOfBird" placeholder="Enter Type Of Bird.." required>
+
+                <label for="PlaceOfSighting">Place Of Sighting: </label>
+                <input type="text" maxlength="100" id="PlaceOfSighting" name="PlaceOfSighting" placeholder="Enter Place Of Sighting.. " required>
+
+                <label for="SpottingDate">Spotting Date and time: </label>
+                <input type="datetime-local" id="SpottingDate" name="SpottingDate" placeholder="Enter Spotting Date.." required>
+                <br>
+
+                <label for="lname">Confidence in sighting: </label>
+                <input type="radio" id="confident" name="ConfidenceOfSight" value="1" required>
+                <label for="confident">Confident</label>
+                <input type="radio" id="not-confident" name="ConfidenceOfSight" value="0" required>
+                <label for="not-confident">Not confident</label><br>
+
+
+                <input type="submit" value="Submit" class="add-button">
+            </form>
+        </div>
+
+    </div>
+
+
+</body>
+
+</html>
