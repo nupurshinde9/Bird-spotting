@@ -16,11 +16,7 @@ router.get('/', function(req, res, next) {
         var query = {};
         dbo.collection("spottings").find(query).toArray(function(err, result) {
             if (err) throw err;
-            console.log("result===============", result);
-
-
             request_param_confidence = req.query.confidence;
-            //bird_spotter_result = bird_spotter_DB;
             bird_spotter_result = result;
 
             if ((request_param_confidence == '0') || (request_param_confidence == '1')) {
@@ -55,8 +51,6 @@ router.post('/spotter/add', function(req, res) {
         ConfidenceOfSight: req.body.ConfidenceOfSight == "1" ? true : false,
         SpottingDate: req.body.SpottingDate
     };
-    // console.log(spotter);
-    // bird_spotter_DB.push(spotter);
 
     MongoClient.connect(url, function(err, db) {
         if (err) throw err;

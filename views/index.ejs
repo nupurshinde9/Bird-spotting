@@ -25,7 +25,7 @@
     <div class="section">
         <span class="section-header">Sightings</span>
         <div class="pull-right">
-            <input type="button" class="add-button" value="Add Sighting" onclick="window.location.href='/add-site'" />
+            <input type="button" class="add-button custom-padding" value="Add Sighting" onclick="window.location.href='/add-site'" />
         </div>
     </div>
 
@@ -40,40 +40,47 @@
     </div>
 
     <div class="section">
-        <table>
-            <tr>
-                <th>Type Of Bird</th>
-                <th>Confidence Of Sight</th>
-                <th>Spotting Date</th>
-                <th>Extra Info</th>
-            </tr>
-            <% bird_spotter_result.forEach(function(result){ %>
-                <tr class="expand">
-                    <td>
-                        <%= result.TypeOfBird %>
-                    </td>
-                    <td>
-                        <%= result.ConfidenceOfSight? 'Confident': 'Non-confident' %>
-                    </td>
-                    <td>
-                        <%= result.SpottingDate %>
-                    </td>
-                    <td>
-                        <i class="fa fa-chevron-down expand"></i>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="4">
-                        <p>Place of sighting:
-                            <%= result.PlaceOfSighting %>
-                        </p>
-                        <p>Spotter Name:
-                            <%= result.SpotterName %>
-                        </p>
-                    </td>
-                </tr>
-                <%  }); %>
-        </table>
+        <% if (!(bird_spotter_result.length > 0)) { %>
+            <h3> No sightings are yet available to show. Be the first one to add your sighting. </h3>
+            <h3>Click on
+                <input type="button" class="add-button" value="Add Sighting" onclick="window.location.href='/add-site'" /> and get started.</h3>
+            <% } else { %>
+                <table>
+                    <tr>
+                        <th>Type Of Bird</th>
+                        <th>Confidence Of Sight</th>
+                        <th>Spotting Date</th>
+                        <th>Extra Info</th>
+                    </tr>
+                    <% bird_spotter_result.forEach(function(result){ %>
+                        <tr class="expand">
+                            <td>
+                                <%= result.TypeOfBird %>
+                            </td>
+                            <td>
+                                <%= result.ConfidenceOfSight? 'Confident': 'Non-confident' %>
+                            </td>
+                            <td>
+                                <%= result.SpottingDate %>
+                            </td>
+                            <td>
+                                <i class="fa fa-chevron-down expand"></i>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="4">
+                                <p>Place of sighting:
+                                    <%= result.PlaceOfSighting %>
+                                </p>
+                                <p>Spotter Name:
+                                    <%= result.SpotterName %>
+                                </p>
+                            </td>
+                        </tr>
+                        <%  }); %>
+                </table>
+                <% } %>
+
     </div>
 </body>
 
