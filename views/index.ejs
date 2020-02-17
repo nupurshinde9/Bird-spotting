@@ -40,18 +40,21 @@
     </div>
 
     <div class="section">
-        <% if (!(bird_spotter_result.length > 0)) { %>
-            <h3> No sightings are yet available to show. Be the first one to add your sighting. </h3>
-            <h3>Click on
-                <input type="button" class="add-button" value="Add Sighting" onclick="window.location.href='/add-site'" /> and get started.</h3>
-            <% } else { %>
-                <table>
-                    <tr>
-                        <th>Type Of Bird</th>
-                        <th>Confidence Of Sight</th>
-                        <th>Spotting Date</th>
-                        <th>Extra Info</th>
-                    </tr>
+        <table>
+            <tr>
+                <th>Type Of Bird</th>
+                <th>Confidence Of Sight</th>
+                <th>Spotting Date</th>
+                <th>Extra Info</th>
+            </tr>
+            <% if (!(bird_spotter_result.length > 0)) { %>
+                <tr>
+                    <td class="align-center" colspan="4">
+                        <span>No sightings are yet available to show. Be the first one to add your sighting.
+                        </span>
+                    </td>
+                </tr>
+                <% } else { %>
                     <% bird_spotter_result.forEach(function(result){ %>
                         <tr class="expand">
                             <td>
@@ -78,8 +81,9 @@
                             </td>
                         </tr>
                         <%  }); %>
-                </table>
-                <% } %>
+                            <% } %>
+        </table>
+
 
     </div>
 </body>
